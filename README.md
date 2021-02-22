@@ -83,6 +83,7 @@ in library for each language:
 - Manipulation: basic interfaces for code that wants to change 
   structure, JSONPatch being an example of such (but obviously with use
   of this library it would be applicable to any format).
+- Production: interfaces for creating and duplicating structures.
 
 ## Concepts
 
