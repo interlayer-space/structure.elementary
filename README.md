@@ -6,8 +6,8 @@ mapping code. It is implied that most data can be represented using just
 six types - null, boolean, number, text, group and key-value structure.
 
 This project follows basic concepts of
-[interlayer.space](interlayer-space.github.io) library development, 
-including maturity stages.
+[interlayer.space](https://interlayer-space.github.io) library 
+development, including maturity stages.
 
 ## Repositories
 
