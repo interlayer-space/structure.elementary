@@ -92,7 +92,17 @@ in library for each language:
   and output into structures of intermediate types.
 - Manipulation: basic interfaces for code that wants to change 
   structure, JSONPatch being an example of such (but obviously with use
-  of this library it would be applicable to any format). 
+  of this library it would be applicable to any format).
+  
+## Other notes
+
+This project implies null absence, unless otherwise stated in particular
+repository. That means that there could not be case when node encloses
+null value, when one of node children is null or a null could be passed
+in any method, implementations that do that are considered essentially
+broken. Some methods _may_ return nulls when there is no `Optional`-like
+structure in standard library for particular language, but such methods
+must have appropriate comments.
 
 ## Licensing
 
