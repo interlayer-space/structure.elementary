@@ -67,16 +67,6 @@ Such unification would bring following benefits:
   example, structure passed to program is intended to be processed with 
   JSONPatch operations, or a special gateway may replace patterns 
   `SCP-\d+` with `████-███-██████`.
-  
-This project is not targeting to be compatible with every serialization, 
-deserialization or mapping case. As for now, this project also doesn't 
-put performance as top priority, thus it prefers to provide interfaces 
-for complete data structures rather than primitives for async code or 
-some other functionality which certainly isn't used in majority of 
-applications. This may be addressed in future, but original goal of 
-providing user-friendly structure representation that is perceived as 
-complete (even if it's not fully read from somewhere yet) will always be
-a priority.
 
 ## What's inside?
 
@@ -93,8 +83,8 @@ in library for each language:
 - Manipulation: basic interfaces for code that wants to change 
   structure, JSONPatch being an example of such (but obviously with use
   of this library it would be applicable to any format).
-  
-## Other notes
+
+## Concepts
 
 This project implies null absence, unless otherwise stated in particular
 repository. That means that there could not be case when node encloses
@@ -103,6 +93,28 @@ in any method, implementations that do that are considered essentially
 broken. Some methods _may_ return nulls when there is no `Optional`-like
 structure in standard library for particular language, but such methods
 must have appropriate comments.
+
+This project is not targeting to be compatible with every serialization,
+deserialization or mapping case. As for now, this project also doesn't
+put performance as top priority, thus it prefers to provide interfaces
+for complete data structures rather than primitives for async code or
+some other functionality which certainly isn't used in majority of
+applications. This may be addressed in future, but original goal of
+providing user-friendly structure representation that is perceived as
+complete (even if it's not fully read from somewhere yet) will always be
+a priority.
+
+Repositories, for languages that allow that, expose `NodeKind` enum.
+This enum contains all six base types and a `Special` / `SPECIAL` kind
+for all extra node types introduced by derivations, for example, common
+`MissingNode` pattern used in many libraries. Consuming code should
+account for such kind and pass it through where possible, falling back
+to errors otherwise.
+
+Where applicable, `.asX()` and `.toX()` methods are exposed. First 
+method pattern follows C# `as` keyword behavior, trying to cast current
+instance to X or returning empty response (null or empty Option-like 
+value), while `.toX()` returns X instance or results in an error.
 
 ## Licensing
 
